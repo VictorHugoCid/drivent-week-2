@@ -57,7 +57,6 @@ const ticketsService = {
   getTicketTypes,
   getTicketByUserId,
   getTicketTypeByTicketTypeId,
-  // getTicketByticketTypeId,
   insertTicket,
 };
 

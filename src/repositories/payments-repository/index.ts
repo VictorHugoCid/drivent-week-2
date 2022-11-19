@@ -1,12 +1,20 @@
 import { prisma } from "@/config";
 import { Payment } from "@prisma/client";
 
-async function upsert(userId: number, createdEnrollment: 1, updatedEnrollment: 1) {
+async function getPayment(ticketId: number) {
   // return prisma.enrollment.upsert();
+
+  const payment = prisma.payment.findFirst({
+    where: {
+      ticketId,
+    },
+  });
+  return payment;
 }
 
 const paymentsRepository = {
-  upsert,
+  getPayment,
+
 };
 
 export default paymentsRepository;
