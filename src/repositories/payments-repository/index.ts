@@ -1,9 +1,8 @@
 import { prisma } from "@/config";
+// import { PaymentData } from "@/protocols";
 import { Payment } from "@prisma/client";
 
 async function getPayment(ticketId: number) {
-  // return prisma.enrollment.upsert();
-
   const payment = prisma.payment.findFirst({
     where: {
       ticketId,
@@ -12,9 +11,15 @@ async function getPayment(ticketId: number) {
   return payment;
 }
 
+async function insertPayment(paymentData: Omit<Payment, "id" | "createdAt">) {
+  return prisma.payment.create({
+    data: paymentData,
+  });
+}
+
 const paymentsRepository = {
   getPayment,
-
+  insertPayment,
 };
 
 export default paymentsRepository;
