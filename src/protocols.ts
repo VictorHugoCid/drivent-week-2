@@ -29,3 +29,42 @@ export type RequestError = {
   name: string,
   message: string,
 };
+
+export type TicketTypeEntity = {
+  id: number,
+  name: string,
+  price: number,
+  isRemote: boolean,
+  includesHotel: boolean,
+  createdAt: Date,
+  updatedAt: Date,
+
+}
+
+// export type TicketEntity = {
+//   id: number,
+//   status: TicketStatus, //RESERVED | PAID
+//   ticketTypeId: number,
+//   enrollmentId: number,
+//   TicketType: TicketTypeEntity,
+//   createdAt: Date,
+//   updatedAt: Date,
+
+// }
+export type TicketEntity = {
+  status: TicketStatus, //RESERVED | PAID
+  ticketTypeId: number,
+  enrollmentId: number,
+  // TicketType: TicketTypeEntity,
+}
+
+// export type InsertTicket = {
+//   status: TicketStatus, //RESERVED | PAID
+//   ticketTypeId: number,
+//   enrollmentId: number,
+// }
+
+export enum TicketStatus {
+  RESERVED,
+  PAID
+}
